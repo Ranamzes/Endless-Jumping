@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://4wkwfid04t42"]
+
+[ext_resource type="PackedScene" uid="uid://c8dskuwx1wwt4" path="res://main.tscn" id="1_2endw"]
+[ext_resource type="PackedScene" uid="uid://beqlr2nnae2gn" path="res://menu.tscn" id="2_lwwxc"]
+[ext_resource type="PackedScene" uid="uid://bahmmbuhmrafm" path="res://character.tscn" id="3_77do2"]
+
+[sub_resource type="Environment" id="Environment_i84sk"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_i84sk")
+
+[node name="main" parent="." instance=ExtResource("1_2endw")]
+
+[node name="Camera2D" type="Camera2D" parent="main"]
+position = Vector2(527.091, 716.761)
+
+[node name="CanvasLayer" parent="main" instance=ExtResource("2_lwwxc")]
+
+[node name="CharacterBody2D" parent="main" instance=ExtResource("3_77do2")]
+position = Vector2(527.091, 717.761)
