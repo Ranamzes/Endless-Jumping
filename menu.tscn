@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://beqlr2nnae2gn"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 220.0
+offset_right = 50.0
+offset_bottom = 243.0
+scale = Vector2(17.64, 17.64)
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 853.0
+offset_right = 262.0
+offset_bottom = 884.0
+scale = Vector2(6.32, 6.32)
+text = "PLAY"
