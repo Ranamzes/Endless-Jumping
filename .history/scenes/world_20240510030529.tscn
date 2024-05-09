@@ -1,0 +1,147 @@
+<<<<<<< HEAD
+[gd_scene load_steps=15 format=3 uid="uid://4wkwfid04t42"]
+
+[ext_resource type="PackedScene" uid="uid://d4gg4rod6v3dh" path="res://scenes/main.tscn" id="1_2endw"]
+[ext_resource type="PackedScene" uid="uid://byfydes3axjie" path="res://scenes/menu.tscn" id="2_lwwxc"]
+[ext_resource type="Script" path="res://scenes/Camera.gd" id="2_wlp7w"]
+[ext_resource type="PackedScene" uid="uid://bupi8sct0ieap" path="res://scenes/character.tscn" id="3_77do2"]
+[ext_resource type="Texture2D" uid="uid://bfm5sk28s3off" path="res://assets/sky.png" id="5_4tj5b"]
+[ext_resource type="Texture2D" uid="uid://cahsem2rgd6v2" path="res://assets/sun.png" id="6_yw0rd"]
+[ext_resource type="Texture2D" uid="uid://b6rdk61sigy5g" path="res://assets/river_test.png" id="7_drbgh"]
+[ext_resource type="Texture2D" uid="uid://djukk0b1umtl2" path="res://assets/g1.png" id="8_tfben"]
+[ext_resource type="Texture2D" uid="uid://b35fgkjaxnng4" path="res://assets/g2.png" id="9_dkhyq"]
+[ext_resource type="Texture2D" uid="uid://lm3t2e74kjbf" path="res://assets/g3.png" id="10_xrxss"]
+
+[sub_resource type="Environment" id="Environment_i84sk"]
+
+[sub_resource type="Animation" id="Animation_gw6g4"]
+resource_name = "Move_camera_under_bridge"
+length = 4.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.2, 4.2),
+"transitions": PackedFloat32Array(3.24901, 1, 1, 0.594604),
+"update": 0,
+"values": [Vector2(360, 640), Vector2(360, 640.003), Vector2(360, 640.003), Vector2(360, 1280)]
+}
+
+[sub_resource type="Animation" id="Animation_qsh3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(360, 1280)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1e8j4"]
+_data = {
+"Move_camera_under_bridge": SubResource("Animation_gw6g4"),
+"RESET": SubResource("Animation_qsh3g")
+}
+
+=======
+[gd_scene load_steps=5 format=3 uid="uid://4wkwfid04t42"]
+
+[ext_resource type="PackedScene" path="res://scenes/main.tscn" id="1_2endw"]
+[ext_resource type="PackedScene" path="res://scenes/menu.tscn" id="2_lwwxc"]
+[ext_resource type="PackedScene" path="res://scenes/character.tscn" id="3_77do2"]
+
+[sub_resource type="Environment" id="Environment_i84sk"]
+
+>>>>>>> origin/main
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_i84sk")
+
+[node name="main" parent="." instance=ExtResource("1_2endw")]
+
+[node name="Camera2D" type="Camera2D" parent="main"]
+<<<<<<< HEAD
+unique_name_in_owner = true
+position = Vector2(360, 1280)
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_screen = false
+script = ExtResource("2_wlp7w")
+
+[node name="menu" parent="main" instance=ExtResource("2_lwwxc")]
+
+[node name="CharacterBody2D" parent="main" instance=ExtResource("3_77do2")]
+
+[node name="Parallax Background" type="ParallaxBackground" parent="main"]
+
+[node name="Parallax sky" type="ParallaxLayer" parent="main/Parallax Background"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="sky" type="Sprite2D" parent="main/Parallax Background/Parallax sky"]
+position = Vector2(358, 1302)
+scale = Vector2(0.56, 0.911001)
+texture = ExtResource("5_4tj5b")
+
+[node name="Parallax sun" type="ParallaxLayer" parent="main/Parallax Background"]
+motion_scale = Vector2(0.05, 0.05)
+
+[node name="sun" type="Sprite2D" parent="main/Parallax Background/Parallax sun"]
+position = Vector2(359, 332)
+scale = Vector2(0.400001, 0.400001)
+texture = ExtResource("6_yw0rd")
+
+[node name="Parallax river" type="ParallaxLayer" parent="main/Parallax Background"]
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="river" type="Sprite2D" parent="main/Parallax Background/Parallax river"]
+position = Vector2(359, 2599)
+scale = Vector2(0.640001, 1.16)
+texture = ExtResource("7_drbgh")
+centered = false
+offset = Vector2(-587, -1189)
+
+[node name="Parallax mountain far" type="ParallaxLayer" parent="main/Parallax Background"]
+motion_scale = Vector2(0.3, 0.3)
+
+[node name="mountain far" type="Sprite2D" parent="main/Parallax Background/Parallax mountain far"]
+position = Vector2(362, 1136)
+scale = Vector2(0.560001, 0.560001)
+texture = ExtResource("8_tfben")
+
+[node name="Parallax mountain middle" type="ParallaxLayer" parent="main/Parallax Background"]
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="mountain middle" type="Sprite2D" parent="main/Parallax Background/Parallax mountain middle"]
+position = Vector2(359, 1274)
+scale = Vector2(0.560001, 0.560001)
+texture = ExtResource("9_dkhyq")
+
+[node name="Parallax mountain near" type="ParallaxLayer" parent="main/Parallax Background"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="mountain near" type="Sprite2D" parent="main/Parallax Background/Parallax mountain near"]
+position = Vector2(359, 1788)
+scale = Vector2(0.560001, 0.560001)
+texture = ExtResource("10_xrxss")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="main"]
+libraries = {
+"": SubResource("AnimationLibrary_1e8j4")
+}
+
+[editable path="main/menu"]
+=======
+position = Vector2(527.091, 716.761)
+
+[node name="CanvasLayer" parent="main" instance=ExtResource("2_lwwxc")]
+
+[node name="CharacterBody2D" parent="main" instance=ExtResource("3_77do2")]
+position = Vector2(527.091, 717.761)
+>>>>>>> origin/main
