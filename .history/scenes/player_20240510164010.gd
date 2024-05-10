@@ -6,8 +6,7 @@ extends CharacterBody2D
 var currentSpeed = MIN_SPEED
 var time = 0.0
 var accelerating = false
-var prev_direction = 0
-
+var pre
 @onready var sprite: = $AnimatedSprite2D
 
 

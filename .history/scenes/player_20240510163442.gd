@@ -4,8 +4,7 @@ extends CharacterBody2D
 @export var MAX_SPEED = 450.0
 @export var ACCELERATION = 250.0
 var currentSpeed = MIN_SPEED
-var time = 0.0
-var accelerating = false
+var deltaSpeed = 0
 var prev_direction = 0
 
 @onready var sprite: = $AnimatedSprite2D
@@ -17,22 +16,17 @@ func _physics_process(delta):
 		return
 
 	var direction = Input.get_axis("ui_left", "ui_right")
-
 	if direction != 0:
-		if not accelerating or direction != prev_direction:
-			time = 0.0  # Сброс таймера при смене направления или начале движения
-			accelerating = true
-
-		time += delta
-		var t = min(time / 1.0, 1.0)  # Ограничение времени ускорения
-		var ease_value = t * t * (3.0 - 2.0 * t)  # Применение кубической ease-in-out функции
-		currentSpeed = lerp(MIN_SPEED, MAX_SPEED, ease_value)
+		if direction != prev_direction :
+			deltaSpeed = 0
+		deltaSpeed += delta * ACCELERATION
+		currentSpeed = min(MIN_SPEED + deltaSpeed, MAX_SPEED)
 		velocity.x = currentSpeed * direction
 		prev_direction = direction
 	else:
-		accelerating = false
 		currentSpeed = move_toward(currentSpeed, MIN_SPEED, ACCELERATION * delta)
 		velocity.x = move_toward(velocity.x, 0, currentSpeed * delta)
+		prev_direction = 0
 
 	#print(velocity.x)
 
