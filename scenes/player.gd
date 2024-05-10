@@ -1,6 +1,11 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const MIN_SPEED = 250.0
+const MAX_SPEED = 450.0
+const ACCELERATION = 250.0
+var currentSpeed = MIN_SPEED
+var deltaSpeed = 0
+var prev_direction
 
 @onready var sprite: = $AnimatedSprite2D
 
@@ -12,9 +17,17 @@ func _physics_process(delta):
 		
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		if direction != prev_direction :
+			deltaSpeed = 0
+		deltaSpeed += delta * ACCELERATION
+		currentSpeed = MIN_SPEED + deltaSpeed if MIN_SPEED + deltaSpeed < MAX_SPEED else MAX_SPEED
+		velocity.x = currentSpeed * direction
+		prev_direction = direction
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		deltaSpeed = 0;
+		velocity.x = move_toward(velocity.x, 0, currentSpeed)
+		
+	#print(velocity.x)
 
 	if velocity.x > 0:
 		sprite.scale.x = -1
