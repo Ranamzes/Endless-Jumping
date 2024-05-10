@@ -4,8 +4,7 @@ extends CharacterBody2D
 @export var MAX_SPEED = 450.0
 @export var ACCELERATION = 250.0
 var currentSpeed = MIN_SPEED
-var time = 0.0
-var accelerating = false
+var deltaSpeed = 0
 var prev_direction = 0
 
 @onready var sprite: = $AnimatedSprite2D
