@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var MIN_SPEED = 250.0
-@export var MAX_SPEED = 450.0
-@export var ACCELERATION = 250.0
+@export MIN_SPEED = 250.0
+@export const MAX_SPEED = 450.0
+@export const ACCELERATION = 250.0
 var currentSpeed = MIN_SPEED
 var deltaSpeed = 0
 var prev_direction
