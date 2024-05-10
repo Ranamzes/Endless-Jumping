@@ -42,7 +42,7 @@ func _process(delta):
 		_level.velocity.y = speed * -1
 		_level.move_and_slide()
 		if _level.position.y < screen_size.y * -1 :
-			print("removed " + str(_level.position.y))
+			#print("removed " + str(_level.position.y))
 			levels.remove_at(0)
 			_level.queue_free()
 
@@ -61,7 +61,7 @@ func load_next_level():
 		
 		level.position = Vector2i(0, screen_size.y - 5)
 			
-		print(level.position.y)
+		#print(level.position.y)
 		add_child(level)
 		lastLoadedLevel = level
 		levels.append(level)
