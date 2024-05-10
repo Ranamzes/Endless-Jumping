@@ -15,20 +15,49 @@ const SPEED_MODIFIER : int = 2000
 const MAX_SPEED : int = 550
 var speed : float
 var game_running : bool = false
+var game_over : bool = false
 
 var lastLoadedLevel : CharacterBody2D 
 
 var screen_size : Vector2i
 
+
 @onready var scoreLabel = $HUD.get_node("ScoreLabel")
+@onready var gameOverLabel = $HUD.get_node("GameOverLabel")
+@onready var player = $player
+@onready var playerStartPosition = player.position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_window().size
+	set_process_input(true) 
 
+
+func _input(ev):
+	if game_running :
+		return
+		
+	if Input.is_key_pressed(KEY_SPACE):
+		for _level in levels :
+			_level.queue_free()
+		levels.clear()
+		game_running = true
+		game_over = false
+		gameOverLabel.visible = false
+		player.position = playerStartPosition
+		player.velocity.y = 0
+		score = 0
+		lastLoadedLevel = null
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !game_running :
+		if game_over :
+			#game over here!
+			gameOverLabel.visible = true
+		return
+		
 	speed = START_SPEED + score / SPEED_MODIFIER
 	if speed > MAX_SPEED:
 		speed = MAX_SPEED
@@ -37,6 +66,14 @@ func _process(delta):
 	show_score()
 	
 	load_next_level()
+	
+	if game_over :
+		player.velocity.y = speed * -1
+		player.velocity.x = 0
+		player.move_and_slide()
+		
+		if player.position.y < -100:
+			game_running = false
 	
 	for _level in levels :
 		_level.velocity.y = speed * -1
@@ -65,3 +102,4 @@ func load_next_level():
 		add_child(level)
 		lastLoadedLevel = level
 		levels.append(level)
+

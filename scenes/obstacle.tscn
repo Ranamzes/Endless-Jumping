@@ -1,17 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg4vm4itemvxk"]
+[gd_scene load_steps=4 format=3 uid="uid://cg4vm4itemvxk"]
 
 [ext_resource type="Texture2D" uid="uid://bfu6iq2bl46o3" path="res://assets/obstacles/enemy_2.png" id="1_f286l"]
+[ext_resource type="PackedScene" uid="uid://b4wgwbr86pydp" path="res://scenes/hitbox.tscn" id="2_lrqgo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkksy"]
 radius = 62.0
 
-[node name="obstacle1" type="Area2D"]
+[node name="obstacle" type="Node2D"]
 scale = Vector2(0.65, 0.65)
-collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_f286l")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="hitbox" parent="." instance=ExtResource("2_lrqgo")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, 21)
 shape = SubResource("CircleShape2D_dkksy")

@@ -7,6 +7,9 @@ const SPEED = 300.0
 
 func _physics_process(delta):
 
+	if get_parent().game_over :
+		return
+		
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -19,3 +22,6 @@ func _physics_process(delta):
 		sprite.scale.x = 1
 		
 	move_and_slide()
+
+func player_die():
+	get_parent().game_over = true
