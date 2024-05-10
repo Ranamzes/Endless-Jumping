@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://byfydes3axjie"]
+[gd_scene load_steps=5 format=3 uid="uid://beqlr2nnae2gn"]
 
 [ext_resource type="Script" path="res://scenes/playButton.gd" id="1_3vgoe"]
-[ext_resource type="Texture2D" uid="uid://mnro7sna746b" path="res://assets/logo.png" id="1_qw7es"]
 
 [sub_resource type="Animation" id="Animation_5dysa"]
 resource_name = "FadeOut"
@@ -102,7 +101,6 @@ offset_top = 232.0
 offset_right = 1282.0
 offset_bottom = 860.0
 scale = Vector2(0.56, 0.56)
-texture = ExtResource("1_qw7es")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
 libraries = {

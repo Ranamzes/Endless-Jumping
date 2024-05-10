@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce0bxbm5hg7bx"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_u43ed"]
+[ext_resource type="Texture2D" uid="uid://bfm5sk28s3off" path="res://assets/sky.png" id="2_15cdd"]
+[ext_resource type="PackedScene" uid="uid://d2jcbakxndrhg" path="res://scenes/player.tscn" id="3_25xfo"]
+[ext_resource type="PackedScene" uid="uid://dtbb8b6d1g3n" path="res://scenes/wall.tscn" id="4_rh0mf"]
+[ext_resource type="PackedScene" uid="uid://bcmc1nmrnhub7" path="res://scenes/hud.tscn" id="5_2fiie"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_u43ed")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(385, 543)
+texture = ExtResource("2_15cdd")
+
+[node name="player" parent="." instance=ExtResource("3_25xfo")]
+position = Vector2(349, 422)
+
+[node name="wall_left" parent="." instance=ExtResource("4_rh0mf")]
+position = Vector2(-4, 0)
+
+[node name="wall_right" parent="." instance=ExtResource("4_rh0mf")]
+position = Vector2(724, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 640)
+
+[node name="HUD" parent="." instance=ExtResource("5_2fiie")]

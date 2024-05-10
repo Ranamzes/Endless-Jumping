@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcmc1nmrnhub7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0hxx1"]
+font_size = 28
+outline_size = 2
+outline_color = Color(1, 0.254902, 0.0901961, 1)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 309.0
+offset_bottom = 58.0
+text = " Score: "
+label_settings = SubResource("LabelSettings_0hxx1")
+vertical_alignment = 1
