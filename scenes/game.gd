@@ -59,7 +59,6 @@ func start_level():
 
 	# Загрузка следующего уровня
 	load_next_level()
-
 	show_score()
 
 	# Установка процесса ввода, если он отключен
@@ -75,8 +74,8 @@ func _process(_delta):
 				var gos = gameOverScene.instantiate()
 				gos.position = Vector2i(0, 0)
 				add_child(gos)
+
 				
-			gameOverLabel.visible = true
 			was_record = false
 			if highScoreScene != null :
 				remove_high_score_image()

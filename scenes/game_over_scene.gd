@@ -8,5 +8,6 @@ func _ready():
 
 
 func _on_button_pressed():
-	GameManager.load_game()
+	#GameManager.load_game()
+	self.get_parent().start_level()
 	self.queue_free()
