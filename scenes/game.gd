@@ -44,20 +44,6 @@ func _ready():
 	screen_size = get_window().size
 	set_process_input(true)
 
-func prepare_player_start_animation():
-	var start_position = Vector2(349, -100) # Начальная позиция вне экрана
-	var end_position = Vector2(349, 422) # Конечная позиция на экране
-
-	player.position = start_position
-
-	# Создание Tween и настройка анимации свойства position
-	var tween = get_tree().create_tween()
-	var tweener = tween.tween_property(player, "position", end_position, 1.5)
-
-	# Устанавливаем смягчение и переход для конкретного tweener
-	tweener.set_ease(Tween.EASE_OUT) # Устанавливаем смягчение, чтобы движение замедлялось к концу
-	tweener.set_trans(Tween.TRANS_QUAD)
-
 func start_level():
 	player.position = playerStartPosition
 	player.velocity = Vector2(0, 0)
@@ -77,6 +63,24 @@ func start_level():
 	# Установка процесса ввода, если он отключен
 	set_process_input(true)
 	game_running = true
+
+func prepare_player_start_animation():
+	var start_position = Vector2(349, -100) # Starting y off-screen, x at 349.
+	var end_position = Vector2(349, 422) # Ending at specified y position, x at 349.
+
+	# Убедимся, что объект player доступен и не null
+	if player:
+		player.position = start_position
+
+		# Создание и настройка Tween
+		var tween = get_tree().create_tween()
+		var tweener = tween.tween_property(player, "position", end_position, 1.5)
+
+		# Настройка смягчения и интерполяции
+		tweener.set_ease(Tween.EASE_OUT)
+		tweener.set_trans(Tween.TRANS_QUAD)
+	else:
+		print("Player node is not found or is null.")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

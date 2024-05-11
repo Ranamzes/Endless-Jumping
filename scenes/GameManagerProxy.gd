@@ -5,3 +5,6 @@ func save_game():
 
 func load_game():
 	GameManager.load_game()
+
+func can_play():
+	Globals.can_play = true
