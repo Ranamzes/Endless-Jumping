@@ -3,8 +3,8 @@ extends Node2D
 var highScoreSprite = preload("res://scenes/high_score.tscn")
 # Preload levels
 var level_1_1 = preload ("res://scenes/levels/1/level_1_1.tscn")
-var level_1_2 = preload ("res://scenes/levels/1/level_1_2.tscn")
-var level_1_3 = preload ("res://scenes/levels/1/level_1_3.tscn")
+var level_1_2 = preload ("res://scenes/levels/1/level_1_1.tscn")
+var level_1_3 = preload ("res://scenes/levels/1/level_1_1.tscn")
 var levels_1 := [level_1_1, level_1_2, level_1_3]
 
 var levels: Array
@@ -80,12 +80,12 @@ func _process(_delta):
 	speed = START_SPEED + floor(score) / SPEED_MODIFIER
 	if speed > MAX_SPEED:
 		speed = MAX_SPEED
-		
+
 	if !game_over :
 		score += speed
 		show_score()
-		
-		
+
+
 	show_high_score_image()
 
 	if parallax_levels:
@@ -99,13 +99,13 @@ func _process(_delta):
 		player.velocity.y = speed * - 1
 		player.velocity.x = 0
 		player.move_and_slide()
-	
+
 		if highScoreScene != null && highScoreScene.position.y < 0 :
 			remove_high_score_image()
-		
+
 		if player.position.y < -100:
 			game_running = false
-	
+
 	if highScoreScene != null :
 		highScoreScene.velocity.y = speed * -1
 		highScoreScene.move_and_slide()
