@@ -4,7 +4,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	scoreLabel.text = str(Globals.high_score / 2000)
+	scoreLabel.text = str(Globals.high_score / 2000) + " м."
 
 
 func _on_button_pressed():
