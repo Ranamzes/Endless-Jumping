@@ -1,27 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://vgyacgquuh3p"]
+[gd_scene load_steps=5 format=3 uid="uid://vgyacgquuh3p"]
 
-[ext_resource type="PackedScene" uid="uid://cg4vm4itemvxk" path="res://scenes/obstacle.tscn" id="1_t28m4"]
-[ext_resource type="PackedScene" uid="uid://h4no64wvi5ce" path="res://scenes/obstacle1.tscn" id="2_oeao2"]
+[ext_resource type="PackedScene" uid="uid://cg4vm4itemvxk" path="res://scenes/obstacleKettlebell.tscn" id="1_bje5o"]
+[ext_resource type="PackedScene" uid="uid://h4no64wvi5ce" path="res://scenes/obstacle1ManInCauldron.tscn" id="2_1pivf"]
+[ext_resource type="PackedScene" uid="uid://dqrm6ua111hba" path="res://scenes/obstacle2Plants.tscn" id="3_mof5o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dsw5i"]
 
 [node name="level" type="CharacterBody2D"]
 
-[node name="obstacle" parent="." instance=ExtResource("1_t28m4")]
-position = Vector2(85, 130)
-
-[node name="obstacle2" parent="." instance=ExtResource("1_t28m4")]
-position = Vector2(670, 1163)
-
-[node name="obstacle3" parent="." instance=ExtResource("1_t28m4")]
-position = Vector2(105, 970)
-
-[node name="obstacle5" parent="." instance=ExtResource("1_t28m4")]
-position = Vector2(659, 311)
+[node name="obstacle2" parent="." instance=ExtResource("1_bje5o")]
+position = Vector2(617, 351)
+rotation = 0.261799
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_dsw5i")
 
-[node name="obstacle4" parent="." instance=ExtResource("2_oeao2")]
-position = Vector2(327, 610)
+[node name="obstacle4" parent="." instance=ExtResource("2_1pivf")]
+position = Vector2(372, 867)
+
+[node name="obstacle" parent="." instance=ExtResource("3_mof5o")]
+position = Vector2(81, 482)

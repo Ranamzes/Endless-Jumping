@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcg22rev8js1t"]
+
+[ext_resource type="Texture2D" uid="uid://jsras31082wp" path="res://assets/obstacles/enemy_13Flowers.png" id="1_77qxn"]
+[ext_resource type="PackedScene" uid="uid://b4wgwbr86pydp" path="res://scenes/hitbox.tscn" id="2_mvj6g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtq0x"]
+custom_solver_bias = 0.206
+radius = 44.6154
+height = 138.462
+
+[node name="obstacle" type="Node2D"]
+scale = Vector2(0.65, 0.65)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_77qxn")
+
+[node name="hitbox" parent="." instance=ExtResource("2_mvj6g")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-3.07692, 10.7692)
+rotation = -3.14159
+shape = SubResource("CapsuleShape2D_vtq0x")

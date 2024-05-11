@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://8j6s7perij00"]
+
+[ext_resource type="PackedScene" uid="uid://dcx3i37fp84d5" path="res://scenes/obstacle3Goat.tscn" id="1_1nous"]
+[ext_resource type="PackedScene" uid="uid://b1npxxxfgtyly" path="res://scenes/obstacle11kaktus.tscn" id="2_urakb"]
+[ext_resource type="PackedScene" uid="uid://dcg22rev8js1t" path="res://scenes/obstacle12flowers.tscn" id="3_o5h6v"]
+[ext_resource type="PackedScene" uid="uid://dqrm6ua111hba" path="res://scenes/obstacle2Plants.tscn" id="4_dog4x"]
+[ext_resource type="PackedScene" uid="uid://cg4vm4itemvxk" path="res://scenes/obstacleKettlebell.tscn" id="4_ede86"]
+[ext_resource type="PackedScene" uid="uid://baysg5ov387sd" path="res://scenes/obstacle4Stul.tscn" id="5_2hunl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsw5i"]
+
+[node name="level" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_dsw5i")
+
+[node name="obstacle" parent="." instance=ExtResource("1_1nous")]
+position = Vector2(641, 1099)
+rotation = 0.785398
+
+[node name="obstacle2" parent="." instance=ExtResource("2_urakb")]
+position = Vector2(531, 942)
+rotation = 1.0472
+
+[node name="obstacle3" parent="." instance=ExtResource("3_o5h6v")]
+position = Vector2(109, 815)
+rotation = 0.523599
+
+[node name="obstacle4" parent="." instance=ExtResource("4_ede86")]
+position = Vector2(217, 679)
+
+[node name="obstacle5" parent="." instance=ExtResource("5_2hunl")]
+position = Vector2(497, 403)
+rotation = 1.309
+
+[node name="obstacle6" parent="." instance=ExtResource("4_dog4x")]
+position = Vector2(105, 194)
+rotation = -0.261799

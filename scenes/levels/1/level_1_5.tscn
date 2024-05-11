@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf8hlu6ibltv7"]
+
+[ext_resource type="PackedScene" uid="uid://d0eloeow4xanq" path="res://scenes/obstacle8Anchor.tscn" id="1_7yw6b"]
+[ext_resource type="PackedScene" uid="uid://b3e7acgp02tmx" path="res://scenes/obstacle9Boat1.tscn" id="2_t2rus"]
+[ext_resource type="PackedScene" uid="uid://dqrm6ua111hba" path="res://scenes/obstacle2Plants.tscn" id="3_meftu"]
+[ext_resource type="PackedScene" uid="uid://d2cw6p0jubdbt" path="res://scenes/obstacle10Boat2.tscn" id="3_ngf6o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsw5i"]
+
+[node name="level" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_dsw5i")
+
+[node name="obstacle" parent="." instance=ExtResource("1_7yw6b")]
+position = Vector2(436, 1111)
+
+[node name="obstacle2" parent="." instance=ExtResource("2_t2rus")]
+position = Vector2(172, 634)
+
+[node name="obstacle3" parent="." instance=ExtResource("3_ngf6o")]
+position = Vector2(588, 406)
+
+[node name="obstacle4" parent="." instance=ExtResource("3_meftu")]
+position = Vector2(628, 105)
+rotation = 0.785398
