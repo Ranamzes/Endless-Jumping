@@ -8,7 +8,6 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-86, 73)
-texture = ExtResource("1_1trjd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
