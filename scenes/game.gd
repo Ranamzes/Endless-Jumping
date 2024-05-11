@@ -1,16 +1,19 @@
 extends Node2D
 
 var highScoreSprite = preload("res://scenes/high_score.tscn")
+var gameOverScene = preload ("res://scenes/game_over_scene.tscn")
 # Preload levels
 var level_1_1 = preload ("res://scenes/levels/1/level_1_1.tscn")
 var level_1_2 = preload ("res://scenes/levels/1/level_1_2.tscn")
 var level_1_3 = preload ("res://scenes/levels/1/level_1_3.tscn")
-var levels_1 := [level_1_1, level_1_2, level_1_3]
+var level_1_4 = preload ("res://scenes/levels/1/level_1_4.tscn")
+var level_1_5 = preload ("res://scenes/levels/1/level_1_5.tscn")
+var level_1_6 = preload ("res://scenes/levels/1/level_1_6.tscn")
+var levels_1 := [level_1_1, level_1_2, level_1_3, level_1_4, level_1_5, level_1_6]
 
 var levels: Array
 
 var score : int
-var highScore : int = 0
 var highScoreScene : CharacterBody2D = null
 var SCORE_MODIFIER : int = 100
 const START_SPEED : int = 250
@@ -26,7 +29,6 @@ var lastLoadedLevel: CharacterBody2D
 var screen_size: Vector2i
 
 @onready var scoreLabel = $HUD.get_node("ScoreLabel")
-@onready var highScoreLabel = $HUD.get_node("HighScoreLabel")
 @onready var gameOverLabel = $HUD.get_node("GameOverLabel")
 @onready var player = $player
 @onready var playerStartPosition = player.position
@@ -68,9 +70,12 @@ func _process(_delta):
 	if !game_running:
 		if game_over:
 			#game over here!
-			if score > highScore :
-				highScore = score
-				highScoreLabel.text = "High Score : " + str(highScore / SCORE_MODIFIER) + " "
+			if score > Globals.high_score :
+				Globals.high_score = score
+				var gos = gameOverScene.instantiate()
+				gos.position = Vector2i(0, 0)
+				add_child(gos)
+				
 			gameOverLabel.visible = true
 			was_record = false
 			if highScoreScene != null :
@@ -115,7 +120,6 @@ func _process(_delta):
 		_level.velocity.y = speed * -1
 		_level.move_and_slide()
 		if _level.position.y < screen_size.y * - 1:
-			#print("removed " + str(_level.position.y))
 			levels.remove_at(0)
 			_level.queue_free()
 
@@ -140,7 +144,7 @@ func load_next_level():
 		levels.append(level)
 
 func show_high_score_image():
-	if score > highScore - speed * 200 && was_record == false:
+	if score > Globals.high_score - speed * 200 && was_record == false:
 		highScoreScene = highScoreSprite.instantiate()
 		highScoreScene.position = Vector2i(screen_size.x + 10, screen_size.y - 5)
 		add_child(highScoreScene)
