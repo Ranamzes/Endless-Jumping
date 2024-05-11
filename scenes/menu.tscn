@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://beqlr2nnae2gn"]
+[gd_scene load_steps=7 format=3 uid="uid://beqlr2nnae2gn"]
 
 [ext_resource type="Script" path="res://scenes/playButton.gd" id="1_3vgoe"]
+[ext_resource type="FontFile" uid="uid://dp77ah6lepo7b" path="res://Peace Sans.otf" id="1_vt884"]
 [ext_resource type="Texture2D" uid="uid://mnro7sna746b" path="res://assets/logo.png" id="2_foabv"]
 
 [sub_resource type="Animation" id="Animation_5dysa"]
@@ -87,11 +88,14 @@ offset_bottom = 40.0
 [node name="play_button" type="Button" parent="Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 215.0
+offset_left = 190.0
 offset_top = 853.0
-offset_right = 262.0
-offset_bottom = 884.0
-scale = Vector2(6.32, 6.32)
+offset_right = 546.0
+offset_bottom = 974.0
+scale = Vector2(1.1, 1.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_vt884")
+theme_override_font_sizes/font_size = 61
 text = "PLAY"
 script = ExtResource("1_3vgoe")
 

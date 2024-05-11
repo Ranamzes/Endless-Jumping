@@ -8,7 +8,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyivp"]
 font = ExtResource("4_pcw7a")
-font_size = 35
+font_size = 76
 font_color = Color(0, 0, 0, 1)
 
 [node name="GameOverScene" type="Node2D"]
@@ -31,13 +31,17 @@ offset_right = 559.0
 offset_bottom = 1197.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("4_pcw7a")
+theme_override_font_sizes/font_size = 62
 text = "RESTART"
 
 [node name="Score" type="Label" parent="."]
-offset_left = 240.0
+offset_left = 116.0
 offset_top = 580.0
-offset_right = 518.0
-offset_bottom = 630.0
+offset_right = 697.0
+offset_bottom = 686.0
+theme_override_font_sizes/font_size = 65
 text = "342535534354"
 label_settings = SubResource("LabelSettings_fyivp")
 horizontal_alignment = 1
