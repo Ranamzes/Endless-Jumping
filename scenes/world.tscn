@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://4wkwfid04t42"]
+[gd_scene load_steps=24 format=3 uid="uid://4wkwfid04t42"]
 
 [ext_resource type="PackedScene" uid="uid://d4gg4rod6v3dh" path="res://scenes/main.tscn" id="1_2endw"]
 [ext_resource type="Script" path="res://scenes/GameManagerProxy.gd" id="1_qknic"]
@@ -16,16 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://d07qvp0qr5gem" path="res://assets/bridge_cut_with_stone.png" id="12_3481n"]
 [ext_resource type="Texture2D" uid="uid://dindxq664ej0x" path="res://assets/player_stay.png" id="12_tcjh5"]
 [ext_resource type="Script" path="res://scenes/ParallaxLevells.gd" id="16_p7rl5"]
-[ext_resource type="Texture2D" uid="uid://cp2b41hxxxwcg" path="res://assets/background_mountain1.png" id="16_s4s3r"]
-[ext_resource type="Texture2D" uid="uid://dqe8sxmsk5pcx" path="res://assets/background_mountain2.png" id="17_w1uvt"]
-[ext_resource type="Texture2D" uid="uid://cnkegf0qehop1" path="res://assets/background_mountain3.png" id="18_hlhnc"]
-[ext_resource type="Texture2D" uid="uid://b6uao3jke0b6i" path="res://assets/background_mountain4.png" id="19_tps0c"]
+[ext_resource type="Texture2D" uid="uid://cynutvru7jme8" path="res://assets/mountian_top.png" id="17_q4qgc"]
+[ext_resource type="Texture2D" uid="uid://dspubouu3cbbv" path="res://assets/mountian.png" id="18_1syo5"]
 
 [sub_resource type="Environment" id="Environment_i84sk"]
 
 [sub_resource type="Animation" id="Animation_pb4b2"]
 resource_name = "Move_camera_to_start"
-length = 6.0
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -122,12 +120,24 @@ tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(3.7),
+"times": PackedFloat32Array(4.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"add_scene_and_trigger_method"
 }]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("%ParallaxLevels:offset")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.8, 7.4),
+"transitions": PackedFloat32Array(0.812255, 8.87654),
+"update": 0,
+"values": [Vector2(0, 3820), Vector2(0, 1065)]
 }
 
 [sub_resource type="Animation" id="Animation_gw6g4"]
@@ -300,6 +310,18 @@ tracks/5/keys = {
 "points": PackedFloat32Array(110, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%ParallaxLevels:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 3510)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1e8j4"]
 _data = {
@@ -412,105 +434,29 @@ texture = ExtResource("12_3481n")
 
 [node name="ParallaxLevels" type="ParallaxBackground" parent="main"]
 unique_name_in_owner = true
-offset = Vector2(0, 2000)
-transform = Transform2D(1, 0, 0, 1, 0, 2000)
+offset = Vector2(0, 3510)
+transform = Transform2D(1, 0, 0, 1, 0, 3510)
 script = ExtResource("16_p7rl5")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="main/ParallaxLevels"]
-modulate = Color(0.858821, 0, 0.397277, 1)
 z_index = 1
 motion_scale = Vector2(0.75, 0.75)
-motion_mirroring = Vector2(0, 4564)
+motion_offset = Vector2(0, -1974)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer"]
 position = Vector2(360, 0)
 scale = Vector2(0.57, 0.57)
-texture = ExtResource("16_s4s3r")
+texture = ExtResource("17_q4qgc")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="main/ParallaxLevels"]
-modulate = Color(0, 0.687482, 0.687482, 1)
+texture_repeat = 2
 motion_scale = Vector2(0.75, 0.75)
-motion_offset = Vector2(0, 570)
-motion_mirroring = Vector2(0, 4564)
+motion_mirroring = Vector2(0, 3420)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer2"]
 position = Vector2(360, 0)
 scale = Vector2(0.57, 0.57)
-texture = ExtResource("17_w1uvt")
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="main/ParallaxLevels"]
-modulate = Color(0.905102, 0.899659, 0, 1)
-motion_scale = Vector2(0.75, 0.75)
-motion_offset = Vector2(0, 1140)
-motion_mirroring = Vector2(0, 4564)
-
-[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer3"]
-position = Vector2(360, 0)
-scale = Vector2(0.57, 0.57)
-texture = ExtResource("18_hlhnc")
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="main/ParallaxLevels"]
-modulate = Color(0.230292, 0.404402, 1, 1)
-z_index = -1
-motion_scale = Vector2(0.75, 0.75)
-motion_offset = Vector2(0, 1710)
-motion_mirroring = Vector2(0, 4564)
-
-[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer4"]
-position = Vector2(360, 0)
-scale = Vector2(0.57, 0.57)
-texture = ExtResource("19_tps0c")
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="main/ParallaxLevels"]
-modulate = Color(0.858821, 0, 0.397277, 1)
-z_index = 1
-motion_scale = Vector2(0.75, 0.75)
-motion_offset = Vector2(0, 4394)
-motion_mirroring = Vector2(0, 5134)
-
-[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer5"]
-z_index = 7
-position = Vector2(360, 0)
-scale = Vector2(0.57, 0.57)
-texture = ExtResource("16_s4s3r")
-
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="main/ParallaxLevels"]
-modulate = Color(0, 0.687482, 0.687482, 1)
-motion_scale = Vector2(0.75, 0.75)
-motion_offset = Vector2(0, 6665)
-motion_mirroring = Vector2(0, 5134)
-
-[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer6"]
-position = Vector2(360, 0)
-scale = Vector2(0.57, 0.57)
-texture = ExtResource("17_w1uvt")
-
-[node name="ParallaxLayer7" type="ParallaxLayer" parent="main/ParallaxLevels"]
-visible = false
-modulate = Color(0.905102, 0.899659, 0, 1)
-position = Vector2(0, 6846)
-motion_scale = Vector2(0.75, 0.75)
-motion_offset = Vector2(0, 8846)
-motion_mirroring = Vector2(0, 5134)
-
-[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer7"]
-position = Vector2(360, 0)
-scale = Vector2(0.57, 0.57)
-texture = ExtResource("18_hlhnc")
-
-[node name="ParallaxLayer8" type="ParallaxLayer" parent="main/ParallaxLevels"]
-visible = false
-modulate = Color(0.230292, 0.404402, 1, 1)
-z_index = -1
-position = Vector2(0, 7987)
-motion_scale = Vector2(0.75, 0.75)
-motion_offset = Vector2(0, 9987)
-motion_mirroring = Vector2(0, 5134)
-
-[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer8"]
-position = Vector2(360, 0)
-scale = Vector2(0.57, 0.57)
-texture = ExtResource("19_tps0c")
+texture = ExtResource("18_1syo5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="main"]
 libraries = {

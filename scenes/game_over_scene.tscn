@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm1jpyb314d6l"]
+
+[ext_resource type="Script" path="res://scenes/game_over_scene.gd" id="1_27fqb"]
+[ext_resource type="Texture2D" uid="uid://bfm5sk28s3off" path="res://assets/sky.png" id="2_7lbcs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyivp"]
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+
+[node name="GameOverScene" type="Node2D"]
+script = ExtResource("1_27fqb")
+
+[node name="sky" type="Sprite2D" parent="."]
+position = Vector2(374, 669)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_7lbcs")
+
+[node name="scorePlate" type="Sprite2D" parent="."]
+position = Vector2(383, 944)
+scale = Vector2(0.65, 0.65)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 181.0
+offset_top = 1073.0
+offset_right = 559.0
+offset_bottom = 1197.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "RESTART"
+
+[node name="Score" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 580.0
+offset_right = 518.0
+offset_bottom = 630.0
+text = "342535534354"
+label_settings = SubResource("LabelSettings_fyivp")
+horizontal_alignment = 1
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(380, 146)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

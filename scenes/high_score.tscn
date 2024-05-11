@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwu7qma2quyrc"]
-
-[ext_resource type="Texture2D" uid="uid://p32ht24xy5v6" path="res://assets/flag_of_record.png" id="1_1trjd"]
+[gd_scene load_steps=2 format=3 uid="uid://b2nlinv5l0ioi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4pos3"]
 
@@ -8,7 +6,6 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-86, 73)
-texture = ExtResource("1_1trjd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

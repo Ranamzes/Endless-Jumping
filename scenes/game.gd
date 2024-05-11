@@ -70,7 +70,7 @@ func _process(_delta):
 			#game over here!
 			if score > highScore :
 				highScore = score
-				highScoreLabel.text = "High Score : " + str(highScore / SCORE_MODIFIER) + " "
+				highScoreLabel.text = "High Score : " + str(floor(highScore) / SCORE_MODIFIER) + " "
 			gameOverLabel.visible = true
 			was_record = false
 			if highScoreScene != null :
