@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2nlinv5l0ioi"]
+[gd_scene load_steps=3 format=3 uid="uid://cp1yryt1pil7b"]
+
+[ext_resource type="Texture2D" uid="uid://p32ht24xy5v6" path="res://assets/flag_of_record.png" id="1_1trjd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4pos3"]
 

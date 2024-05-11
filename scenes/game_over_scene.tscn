@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm1jpyb314d6l"]
+[gd_scene load_steps=7 format=3 uid="uid://bbmx0d18av3np"]
 
 [ext_resource type="Script" path="res://scenes/game_over_scene.gd" id="1_27fqb"]
 [ext_resource type="Texture2D" uid="uid://bfm5sk28s3off" path="res://assets/sky.png" id="2_7lbcs"]
+[ext_resource type="Texture2D" uid="uid://ducmsbeqf02ul" path="res://assets/game_over_plate.png" id="3_upl0q"]
+[ext_resource type="FontFile" uid="uid://dp77ah6lepo7b" path="res://Peace Sans.otf" id="4_pcw7a"]
+[ext_resource type="Texture2D" uid="uid://m5p6uj332kl2" path="res://assets/game_over_logo.png" id="5_f766p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyivp"]
+font = ExtResource("4_pcw7a")
 font_size = 35
 font_color = Color(0, 0, 0, 1)
 
@@ -18,6 +22,7 @@ texture = ExtResource("2_7lbcs")
 [node name="scorePlate" type="Sprite2D" parent="."]
 position = Vector2(383, 944)
 scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_upl0q")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 181.0
@@ -40,5 +45,6 @@ horizontal_alignment = 1
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(380, 146)
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_f766p")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

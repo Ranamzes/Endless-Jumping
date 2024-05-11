@@ -1,18 +1,21 @@
 extends Node2D
 
 var highScoreSprite = preload("res://scenes/high_score.tscn")
+var gameOverScene = preload ("res://scenes/game_over_scene.tscn")
 # Preload levels
 var level_1_1 = preload ("res://scenes/levels/1/level_1_1.tscn")
-var level_1_2 = preload ("res://scenes/levels/1/level_1_1.tscn")
-var level_1_3 = preload ("res://scenes/levels/1/level_1_1.tscn")
-var levels_1 := [level_1_1, level_1_2, level_1_3]
+var level_1_2 = preload ("res://scenes/levels/1/level_1_2.tscn")
+var level_1_3 = preload ("res://scenes/levels/1/level_1_3.tscn")
+var level_1_4 = preload ("res://scenes/levels/1/level_1_4.tscn")
+var level_1_5 = preload ("res://scenes/levels/1/level_1_5.tscn")
+var level_1_6 = preload ("res://scenes/levels/1/level_1_6.tscn")
+var levels_1 := [level_1_1, level_1_2, level_1_3, level_1_4, level_1_5, level_1_6]
 
 var levels: Array
 
 var score : int
-var highScore : int = 0
 var highScoreScene : CharacterBody2D = null
-var SCORE_MODIFIER : int = 100
+const SCORE_MODIFIER : int = 100
 const START_SPEED : int = 250
 const SPEED_MODIFIER : int = 2000
 const MAX_SPEED : int = 550
@@ -20,13 +23,13 @@ var speed : float
 var game_running : bool = false
 var game_over : bool = false
 var was_record : bool = true
+var game_paused : bool = false
 
 var lastLoadedLevel: CharacterBody2D
 
 var screen_size: Vector2i
 
 @onready var scoreLabel = $HUD.get_node("ScoreLabel")
-@onready var highScoreLabel = $HUD.get_node("HighScoreLabel")
 @onready var gameOverLabel = $HUD.get_node("GameOverLabel")
 @onready var player = $player
 @onready var playerStartPosition = player.position
@@ -42,9 +45,6 @@ func _ready():
 	set_process_input(true)
 
 func start_level():
-	game_running = true
-	game_over = false
-	gameOverLabel.visible = false
 	player.position = playerStartPosition
 	player.velocity = Vector2(0, 0)
 	score = 0
@@ -57,24 +57,32 @@ func start_level():
 
 	# Загрузка следующего уровня
 	load_next_level()
-
 	show_score()
 
 	# Установка процесса ввода, если он отключен
 	set_process_input(true)
+	game_running = true
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if game_paused :
+		return
 	if !game_running:
 		if game_over:
 			#game over here!
-			if score > highScore :
-				highScore = score
-				highScoreLabel.text = "High Score : " + str(floor(highScore) / SCORE_MODIFIER) + " "
-			gameOverLabel.visible = true
+			if score > Globals.high_score :
+				Globals.high_score = score
+				
 			was_record = false
 			if highScoreScene != null :
 				remove_high_score_image()
+				
+			var gos = gameOverScene.instantiate()
+			gos.position = Vector2i(0, 0)
+			add_child(gos)
+			game_over = false
 		return
 
 	speed = START_SPEED + floor(score) / SPEED_MODIFIER
@@ -83,6 +91,7 @@ func _process(_delta):
 
 	if !game_over :
 		score += speed
+		
 		show_score()
 
 
@@ -115,7 +124,6 @@ func _process(_delta):
 		_level.velocity.y = speed * -1
 		_level.move_and_slide()
 		if _level.position.y < screen_size.y * - 1:
-			#print("removed " + str(_level.position.y))
 			levels.remove_at(0)
 			_level.queue_free()
 
@@ -140,7 +148,7 @@ func load_next_level():
 		levels.append(level)
 
 func show_high_score_image():
-	if score > highScore - speed * 200 && was_record == false:
+	if score > Globals.high_score - speed * 200 && was_record == false:
 		highScoreScene = highScoreSprite.instantiate()
 		highScoreScene.position = Vector2i(screen_size.x + 10, screen_size.y - 5)
 		add_child(highScoreScene)
