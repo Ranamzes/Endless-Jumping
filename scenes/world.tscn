@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://4wkwfid04t42"]
+[gd_scene load_steps=25 format=3 uid="uid://4wkwfid04t42"]
 
 [ext_resource type="PackedScene" uid="uid://d4gg4rod6v3dh" path="res://scenes/main.tscn" id="1_2endw"]
 [ext_resource type="Script" path="res://scenes/GameManagerProxy.gd" id="1_qknic"]
@@ -20,6 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://dspubouu3cbbv" path="res://assets/mountian.png" id="18_1syo5"]
 
 [sub_resource type="Environment" id="Environment_i84sk"]
+
+[sub_resource type="Animation" id="Animation_8sn42"]
+resource_name = "EnterScreen"
+length = 2.0
 
 [sub_resource type="Animation" id="Animation_pb4b2"]
 resource_name = "Move_camera_to_start"
@@ -325,6 +329,7 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1e8j4"]
 _data = {
+"EnterScreen": SubResource("Animation_8sn42"),
 "Move_camera_to_start": SubResource("Animation_pb4b2"),
 "Move_camera_under_bridge": SubResource("Animation_gw6g4"),
 "RESET": SubResource("Animation_qsh3g")
@@ -418,7 +423,7 @@ motion_scale = Vector2(0.8, 0.8)
 motion_offset = Vector2(0, 299)
 
 [node name="mountain2" type="Sprite2D" parent="main/Parallax Background/Parallax mountain bridge"]
-position = Vector2(188, 784)
+position = Vector2(203, 802)
 scale = Vector2(0.380219, 0.380219)
 texture = ExtResource("12_tcjh5")
 

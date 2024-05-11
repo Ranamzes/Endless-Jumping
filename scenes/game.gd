@@ -1,6 +1,6 @@
 extends Node2D
 
-var highScoreSprite = preload("res://scenes/high_score.tscn")
+var highScoreSprite = preload ("res://scenes/high_score.tscn")
 var gameOverScene = preload ("res://scenes/game_over_scene.tscn")
 # Preload levels
 var level_1_1 = preload ("res://scenes/levels/1/level_1_1.tscn")
@@ -13,17 +13,17 @@ var levels_1 := [level_1_1, level_1_2, level_1_3, level_1_4, level_1_5, level_1_
 
 var levels: Array
 
-var score : int
-var highScoreScene : CharacterBody2D = null
-const SCORE_MODIFIER : int = 100
-const START_SPEED : int = 250
-const SPEED_MODIFIER : int = 2000
-const MAX_SPEED : int = 550
-var speed : float
-var game_running : bool = false
-var game_over : bool = false
-var was_record : bool = true
-var game_paused : bool = false
+var score: int
+var highScoreScene: CharacterBody2D = null
+const SCORE_MODIFIER: int = 100
+const START_SPEED: int = 250
+const SPEED_MODIFIER: int = 2000
+const MAX_SPEED: int = 550
+var speed: float
+var game_running: bool = false
+var game_over: bool = false
+var was_record: bool = true
+var game_paused: bool = false
 
 var lastLoadedLevel: CharacterBody2D
 
@@ -44,9 +44,24 @@ func _ready():
 	screen_size = get_window().size
 	set_process_input(true)
 
+func prepare_player_start_animation():
+	var start_position = Vector2(349, -100) # Начальная позиция вне экрана
+	var end_position = Vector2(349, 422) # Конечная позиция на экране
+
+	player.position = start_position
+
+	# Создание Tween и настройка анимации свойства position
+	var tween = get_tree().create_tween()
+	var tweener = tween.tween_property(player, "position", end_position, 1.5)
+
+	# Устанавливаем смягчение и переход для конкретного tweener
+	tweener.set_ease(Tween.EASE_OUT) # Устанавливаем смягчение, чтобы движение замедлялось к концу
+	tweener.set_trans(Tween.TRANS_QUAD)
+
 func start_level():
 	player.position = playerStartPosition
 	player.velocity = Vector2(0, 0)
+	prepare_player_start_animation()
 	score = 0
 	speed = START_SPEED
 
@@ -63,22 +78,20 @@ func start_level():
 	set_process_input(true)
 	game_running = true
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if game_paused :
+	if game_paused:
 		return
 	if !game_running:
 		if game_over:
 			#game over here!
-			if score > Globals.high_score :
+			if score > Globals.high_score:
 				Globals.high_score = score
-				
+
 			was_record = false
-			if highScoreScene != null :
+			if highScoreScene != null:
 				remove_high_score_image()
-				
+
 			var gos = gameOverScene.instantiate()
 			gos.position = Vector2i(0, 0)
 			add_child(gos)
@@ -89,11 +102,10 @@ func _process(_delta):
 	if speed > MAX_SPEED:
 		speed = MAX_SPEED
 
-	if !game_over :
+	if !game_over:
 		score += speed
-		
-		show_score()
 
+		show_score()
 
 	show_high_score_image()
 
@@ -109,19 +121,18 @@ func _process(_delta):
 		player.velocity.x = 0
 		player.move_and_slide()
 
-		if highScoreScene != null && highScoreScene.position.y < 0 :
+		if highScoreScene != null&&highScoreScene.position.y < 0:
 			remove_high_score_image()
 
-		if player.position.y < -100:
+		if player.position.y < - 100:
 			game_running = false
 
-	if highScoreScene != null :
-		highScoreScene.velocity.y = speed * -1
+	if highScoreScene != null:
+		highScoreScene.velocity.y = speed * - 1
 		highScoreScene.move_and_slide()
 
-
-	for _level in levels :
-		_level.velocity.y = speed * -1
+	for _level in levels:
+		_level.velocity.y = speed * - 1
 		_level.move_and_slide()
 		if _level.position.y < screen_size.y * - 1:
 			levels.remove_at(0)
@@ -148,7 +159,7 @@ func load_next_level():
 		levels.append(level)
 
 func show_high_score_image():
-	if score > Globals.high_score - speed * 200 && was_record == false:
+	if score > Globals.high_score - speed * 200&&was_record == false:
 		highScoreScene = highScoreSprite.instantiate()
 		highScoreScene.position = Vector2i(screen_size.x + 10, screen_size.y - 5)
 		add_child(highScoreScene)
