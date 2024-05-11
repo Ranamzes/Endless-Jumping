@@ -15,7 +15,7 @@ var levels: Array
 
 var score : int
 var highScoreScene : CharacterBody2D = null
-var SCORE_MODIFIER : int = 100
+var SCORE_MODIFIER : int = 10000
 const START_SPEED : int = 250
 const SPEED_MODIFIER : int = 2000
 const MAX_SPEED : int = 550
@@ -70,7 +70,7 @@ func _process(_delta):
 		if game_over:
 			#game over here!
 			if score > Globals.high_score :
-				Globals.high_score = score
+				Globals.high_score = score / SCORE_MODIFIER
 				var gos = gameOverScene.instantiate()
 				gos.position = Vector2i(0, 0)
 				add_child(gos)
