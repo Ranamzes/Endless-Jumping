@@ -1,32 +1,233 @@
-[gd_scene load_steps=15 format=3 uid="uid://4wkwfid04t42"]
+[gd_scene load_steps=26 format=3 uid="uid://4wkwfid04t42"]
 
 [ext_resource type="PackedScene" uid="uid://d4gg4rod6v3dh" path="res://scenes/main.tscn" id="1_2endw"]
+[ext_resource type="Script" path="res://scenes/GameManagerProxy.gd" id="1_qknic"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="2_0f7s3"]
 [ext_resource type="PackedScene" uid="uid://beqlr2nnae2gn" path="res://scenes/menu.tscn" id="2_lwwxc"]
 [ext_resource type="Script" path="res://scenes/Camera.gd" id="2_wlp7w"]
 [ext_resource type="PackedScene" uid="uid://bupi8sct0ieap" path="res://scenes/character.tscn" id="3_77do2"]
 [ext_resource type="Texture2D" uid="uid://bfm5sk28s3off" path="res://assets/sky.png" id="5_4tj5b"]
 [ext_resource type="Texture2D" uid="uid://cahsem2rgd6v2" path="res://assets/sun.png" id="6_yw0rd"]
-[ext_resource type="Texture2D" uid="uid://b6rdk61sigy5g" path="res://assets/river_test.png" id="7_drbgh"]
-[ext_resource type="Texture2D" uid="uid://djukk0b1umtl2" path="res://assets/g1.png" id="8_tfben"]
-[ext_resource type="Texture2D" uid="uid://b35fgkjaxnng4" path="res://assets/g2.png" id="9_dkhyq"]
-[ext_resource type="Texture2D" uid="uid://lm3t2e74kjbf" path="res://assets/g3.png" id="10_xrxss"]
+[ext_resource type="Texture2D" uid="uid://ccott71h6by6g" path="res://assets/river_long.png" id="7_rn17a"]
+[ext_resource type="Texture2D" uid="uid://bgwfsidotx764" path="res://assets/mountian4.png" id="8_6t1hh"]
+[ext_resource type="Texture2D" uid="uid://bj8737r4lh5pd" path="res://assets/mountian3.png" id="9_efgeg"]
+[ext_resource type="Texture2D" uid="uid://vpvxyd1tpwv4" path="res://assets/mountian2.png" id="10_0q7nj"]
+[ext_resource type="Texture2D" uid="uid://cafpqnvmjxiu5" path="res://assets/mountian1.png" id="11_3bt4u"]
+[ext_resource type="Texture2D" uid="uid://d07qvp0qr5gem" path="res://assets/bridge_cut_with_stone.png" id="12_3481n"]
+[ext_resource type="Texture2D" uid="uid://dindxq664ej0x" path="res://assets/player_stay.png" id="12_tcjh5"]
+[ext_resource type="Script" path="res://scenes/ParallaxLevells.gd" id="16_p7rl5"]
+[ext_resource type="Texture2D" uid="uid://cp2b41hxxxwcg" path="res://assets/background_mountain1.png" id="16_s4s3r"]
+[ext_resource type="Texture2D" uid="uid://dqe8sxmsk5pcx" path="res://assets/background_mountain2.png" id="17_w1uvt"]
+[ext_resource type="Texture2D" uid="uid://cnkegf0qehop1" path="res://assets/background_mountain3.png" id="18_hlhnc"]
+[ext_resource type="Texture2D" uid="uid://b6uao3jke0b6i" path="res://assets/background_mountain4.png" id="19_tps0c"]
 
 [sub_resource type="Environment" id="Environment_i84sk"]
 
-[sub_resource type="Animation" id="Animation_gw6g4"]
-resource_name = "Move_camera_under_bridge"
-length = 4.2
+[sub_resource type="Animation" id="Animation_pb4b2"]
+resource_name = "Move_camera_to_start"
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%Camera2D:position")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Parallax Background:scroll_base_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(2, 0.196146),
+"update": 0,
+"values": [Vector2(0, -803), Vector2(0, -3243)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parallax Background/Parallax mountain middle:motion_offset:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parallax Background/Parallax mountain middle:motion_offset:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(39, -0.25, 0, 2, 1.29999, 114, -0.5, -0.700012, 0.25, 0),
+"times": PackedFloat32Array(0, 6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parallax Background/Parallax mountain near:motion_offset:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parallax Background/Parallax mountain near:motion_offset:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 1.8, 0.299988, 110, -0.9, -0.700012, 0.25, 0),
+"times": PackedFloat32Array(0, 6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Parallax Background/Parallax sun:motion_offset:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(100, -0.25, 0, 2.1, 1.29999, 310, -1, -3.70001, 0.25, 0),
+"times": PackedFloat32Array(0, 6)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Parallax Background/Parallax sun:motion_offset:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(130, -0.25, 0, 1.9, 0.299988, 50, -0.9, 0.299988, 0.25, 0),
+"times": PackedFloat32Array(0, 6)
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../GameManagerProxy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"add_scene_and_trigger_method"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gw6g4"]
+resource_name = "Move_camera_under_bridge"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Parallax Background:scroll_base_offset")
+tracks/0/interp = 2
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.2, 4.2),
-"transitions": PackedFloat32Array(3.24901, 1, 1, 0.594604),
+"times": PackedFloat32Array(0, 4.3),
+"transitions": PackedFloat32Array(1.41421, 0.241484),
 "update": 0,
-"values": [Vector2(360, 640), Vector2(360, 640.003), Vector2(360, 640.003), Vector2(360, 1280)]
+"values": [Vector2(0, 760), Vector2(0, -803)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parallax Background/Parallax sun:motion_offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.3),
+"transitions": PackedFloat32Array(2, 0.233259),
+"update": 0,
+"values": [Vector2(20, 0), Vector2(100, 130)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [null],
+"method": &"_input"
+}]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parallax Background/Parallax mountain middle:motion_offset:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parallax Background/Parallax mountain middle:motion_offset:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(39, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Parallax Background/Parallax mountain near:motion_offset:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Parallax Background/Parallax mountain near:motion_offset:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../GameManagerProxy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"save_game"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_qsh3g"]
@@ -34,18 +235,75 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%Camera2D:position")
+tracks/0/path = NodePath("Parallax Background:scroll_base_offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(360, 1280)]
+"values": [Vector2(0, 760)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parallax Background/Parallax sun:motion_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parallax Background/Parallax mountain middle:motion_offset:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parallax Background/Parallax mountain middle:motion_offset:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(114, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parallax Background/Parallax mountain near:motion_offset:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Parallax Background/Parallax mountain near:motion_offset:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(110, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1e8j4"]
 _data = {
+"Move_camera_to_start": SubResource("Animation_pb4b2"),
 "Move_camera_under_bridge": SubResource("Animation_gw6g4"),
 "RESET": SubResource("Animation_qsh3g")
 }
@@ -53,14 +311,20 @@ _data = {
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_i84sk")
 
+[node name="GameManagerProxy" type="Node2D" parent="."]
+script = ExtResource("1_qknic")
+
 [node name="main" parent="." instance=ExtResource("1_2endw")]
+script = ExtResource("2_0f7s3")
 
 [node name="Camera2D" type="Camera2D" parent="main"]
 unique_name_in_owner = true
-position = Vector2(360, 1280)
-limit_smoothed = true
+position = Vector2(360, 770)
 position_smoothing_enabled = true
-editor_draw_screen = false
+drag_vertical_enabled = true
+drag_vertical_offset = -1.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
 script = ExtResource("2_wlp7w")
 
 [node name="menu" parent="main" instance=ExtResource("2_lwwxc")]
@@ -68,17 +332,19 @@ script = ExtResource("2_wlp7w")
 [node name="CharacterBody2D" parent="main" instance=ExtResource("3_77do2")]
 
 [node name="Parallax Background" type="ParallaxBackground" parent="main"]
+scroll_base_offset = Vector2(0, 760)
 
 [node name="Parallax sky" type="ParallaxLayer" parent="main/Parallax Background"]
 motion_scale = Vector2(0.1, 0.1)
 
 [node name="sky" type="Sprite2D" parent="main/Parallax Background/Parallax sky"]
-position = Vector2(358, 1302)
-scale = Vector2(0.56, 0.911001)
+position = Vector2(358, 1242)
+scale = Vector2(0.57, 0.927)
 texture = ExtResource("5_4tj5b")
 
 [node name="Parallax sun" type="ParallaxLayer" parent="main/Parallax Background"]
-motion_scale = Vector2(0.05, 0.05)
+motion_scale = Vector2(3, 0.1)
+motion_offset = Vector2(20, 0)
 
 [node name="sun" type="Sprite2D" parent="main/Parallax Background/Parallax sun"]
 position = Vector2(359, 332)
@@ -87,47 +353,108 @@ texture = ExtResource("6_yw0rd")
 
 [node name="Parallax river" type="ParallaxLayer" parent="main/Parallax Background"]
 motion_scale = Vector2(0.4, 0.4)
+motion_offset = Vector2(0, 28)
 
 [node name="river" type="Sprite2D" parent="main/Parallax Background/Parallax river"]
-position = Vector2(359, 2599)
-scale = Vector2(0.640001, 1.16)
-texture = ExtResource("7_drbgh")
+position = Vector2(359, 1748)
+scale = Vector2(0.640001, 0.44)
+texture = ExtResource("7_rn17a")
 centered = false
 offset = Vector2(-587, -1189)
 
-[node name="Parallax river2" type="ParallaxLayer" parent="main/Parallax Background"]
-motion_scale = Vector2(0.3, 0.3)
-
-[node name="river" type="Sprite2D" parent="main/Parallax Background/Parallax river2"]
-position = Vector2(359, -2599)
-scale = Vector2(0.640001, 1.16)
-texture = ExtResource("7_drbgh")
-centered = false
-offset = Vector2(-587, 0)
-
 [node name="Parallax mountain far" type="ParallaxLayer" parent="main/Parallax Background"]
-motion_scale = Vector2(0.3, 0.3)
+motion_scale = Vector2(0.4, 0.4)
+motion_offset = Vector2(0, -90)
 
 [node name="mountain far" type="Sprite2D" parent="main/Parallax Background/Parallax mountain far"]
-position = Vector2(362, 1136)
-scale = Vector2(0.560001, 0.560001)
-texture = ExtResource("8_tfben")
+position = Vector2(362, 1210)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("8_6t1hh")
 
 [node name="Parallax mountain middle" type="ParallaxLayer" parent="main/Parallax Background"]
-motion_scale = Vector2(0.4, 0.4)
+position = Vector2(0, 54)
+motion_scale = Vector2(0.54, 0.54)
+motion_offset = Vector2(0, 114)
 
 [node name="mountain middle" type="Sprite2D" parent="main/Parallax Background/Parallax mountain middle"]
 position = Vector2(359, 1274)
-scale = Vector2(0.560001, 0.560001)
-texture = ExtResource("9_dkhyq")
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("9_efgeg")
 
 [node name="Parallax mountain near" type="ParallaxLayer" parent="main/Parallax Background"]
-motion_scale = Vector2(0.5, 0.5)
+motion_scale = Vector2(0.7, 0.7)
+motion_offset = Vector2(0, 110)
 
 [node name="mountain near" type="Sprite2D" parent="main/Parallax Background/Parallax mountain near"]
 position = Vector2(359, 1788)
-scale = Vector2(0.560001, 0.560001)
-texture = ExtResource("10_xrxss")
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("10_0q7nj")
+
+[node name="Parallax mountain bridge" type="ParallaxLayer" parent="main/Parallax Background"]
+position = Vector2(13, 0)
+motion_scale = Vector2(0.8, 0.8)
+motion_offset = Vector2(0, 299)
+
+[node name="mountain2" type="Sprite2D" parent="main/Parallax Background/Parallax mountain bridge"]
+position = Vector2(188, 784)
+scale = Vector2(0.380219, 0.380219)
+texture = ExtResource("12_tcjh5")
+
+[node name="mountain" type="Sprite2D" parent="main/Parallax Background/Parallax mountain bridge"]
+position = Vector2(346, 1835)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("11_3bt4u")
+
+[node name="bridge" type="Sprite2D" parent="main/Parallax Background/Parallax mountain bridge"]
+position = Vector2(351, 1116)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("12_3481n")
+
+[node name="ParallaxLevels" type="ParallaxBackground" parent="main"]
+unique_name_in_owner = true
+offset = Vector2(0, 70)
+transform = Transform2D(1, 0, 0, 1, 0, 70)
+script = ExtResource("16_p7rl5")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="main/ParallaxLevels"]
+z_index = 1
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(0, 2640)
+
+[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer"]
+z_index = 7
+y_sort_enabled = true
+position = Vector2(360, 1867)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("16_s4s3r")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="main/ParallaxLevels"]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(0, 2640)
+
+[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer2"]
+position = Vector2(360, 2455)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("17_w1uvt")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="main/ParallaxLevels"]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(0, 2640)
+
+[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer3"]
+position = Vector2(360, 3150)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("18_hlhnc")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="main/ParallaxLevels"]
+z_index = -1
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(0, 2640)
+
+[node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLevels/ParallaxLayer4"]
+position = Vector2(360, 3715)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("19_tps0c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="main"]
 libraries = {
