@@ -15,7 +15,7 @@ var levels: Array
 
 var score : int
 var highScoreScene : CharacterBody2D = null
-var SCORE_MODIFIER : int = 10000
+const SCORE_MODIFIER : int = 100
 const START_SPEED : int = 250
 const SPEED_MODIFIER : int = 2000
 const MAX_SPEED : int = 550
@@ -23,6 +23,7 @@ var speed : float
 var game_running : bool = false
 var game_over : bool = false
 var was_record : bool = true
+var game_paused : bool = false
 
 var lastLoadedLevel: CharacterBody2D
 
@@ -44,9 +45,6 @@ func _ready():
 	set_process_input(true)
 
 func start_level():
-	game_running = true
-	game_over = false
-	gameOverLabel.visible = false
 	player.position = playerStartPosition
 	player.velocity = Vector2(0, 0)
 	score = 0
@@ -63,22 +61,28 @@ func start_level():
 
 	# Установка процесса ввода, если он отключен
 	set_process_input(true)
+	game_running = true
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if game_paused :
+		return
 	if !game_running:
 		if game_over:
 			#game over here!
 			if score > Globals.high_score :
-				Globals.high_score = score / SCORE_MODIFIER
-				var gos = gameOverScene.instantiate()
-				gos.position = Vector2i(0, 0)
-				add_child(gos)
-
+				Globals.high_score = score
 				
 			was_record = false
 			if highScoreScene != null :
 				remove_high_score_image()
+				
+			var gos = gameOverScene.instantiate()
+			gos.position = Vector2i(0, 0)
+			add_child(gos)
+			game_over = false
 		return
 
 	speed = START_SPEED + floor(score) / SPEED_MODIFIER
@@ -87,6 +91,7 @@ func _process(_delta):
 		
 	if !game_over :
 		score += speed
+		
 		show_score()
 		
 		

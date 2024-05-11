@@ -4,10 +4,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	scoreLabel.text = str(Globals.high_score)
+	scoreLabel.text = str(Globals.high_score / 2000)
 
 
 func _on_button_pressed():
-	#GameManager.load_game()
 	self.get_parent().start_level()
 	self.queue_free()
