@@ -10,7 +10,7 @@
 script = ExtResource("1_u43ed")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(385, 543)
+position = Vector2(385, 261)
 texture = ExtResource("2_15cdd")
 
 [node name="player" parent="." instance=ExtResource("3_25xfo")]

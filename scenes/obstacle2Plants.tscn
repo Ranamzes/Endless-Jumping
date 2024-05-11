@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b4wgwbr86pydp" path="res://scenes/hitbox.tscn" id="2_tjcxy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_56ruw"]
-radius = 56.9231
+radius = 52.3077
 height = 193.846
 
 [node name="obstacle" type="Node2D"]
@@ -16,5 +16,5 @@ texture = ExtResource("1_6a4l1")
 [node name="hitbox" parent="." instance=ExtResource("2_tjcxy")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(10.7692, -6.15385)
+position = Vector2(12.3077, 21.5385)
 shape = SubResource("CapsuleShape2D_56ruw")

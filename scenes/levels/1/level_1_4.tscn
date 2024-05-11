@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b52u11ot8oqc0"]
+
+[ext_resource type="PackedScene" uid="uid://dfmbmxibhjet0" path="res://scenes/obstacle7Piano.tscn" id="1_2bw8j"]
+[ext_resource type="PackedScene" uid="uid://baysg5ov387sd" path="res://scenes/obstacle4Stul.tscn" id="2_m1hnb"]
+[ext_resource type="PackedScene" uid="uid://b1npxxxfgtyly" path="res://scenes/obstacle11kaktus.tscn" id="3_fc16m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsw5i"]
+
+[node name="level" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_dsw5i")
+
+[node name="obstacle" parent="." instance=ExtResource("1_2bw8j")]
+position = Vector2(414, 414)
+rotation = -0.261799
+
+[node name="obstacle2" parent="." instance=ExtResource("2_m1hnb")]
+position = Vector2(621, 773)
+rotation = -1.0472
+
+[node name="obstacle3" parent="." instance=ExtResource("3_fc16m")]
+position = Vector2(80, 1057)

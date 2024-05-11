@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2cw6p0jubdbt"]
+
+[ext_resource type="Texture2D" uid="uid://dln2kespvrfs6" path="res://assets/obstacles/enemy_13 boat2.png" id="1_1n1kc"]
+[ext_resource type="PackedScene" uid="uid://b4wgwbr86pydp" path="res://scenes/hitbox.tscn" id="2_o6oes"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtq0x"]
+custom_solver_bias = 0.206
+radius = 101.477
+height = 352.043
+
+[node name="obstacle" type="Node2D"]
+scale = Vector2(0.65, 0.65)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1n1kc")
+
+[node name="hitbox" parent="." instance=ExtResource("2_o6oes")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-1.53846, -9.23077)
+rotation = -2.0944
+shape = SubResource("CapsuleShape2D_vtq0x")
