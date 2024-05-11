@@ -10,13 +10,12 @@
 script = ExtResource("1_u43ed")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(385, 543)
 texture = ExtResource("2_15cdd")
 
 [node name="player" parent="." instance=ExtResource("3_25xfo")]
 position = Vector2(349, 422)
-MIN_SPEED = 100.0
-ACCELERATION = 70.0
 
 [node name="wall_left" parent="." instance=ExtResource("4_rh0mf")]
 position = Vector2(-4, 0)
@@ -28,3 +27,4 @@ position = Vector2(724, 2)
 position = Vector2(360, 640)
 
 [node name="HUD" parent="." instance=ExtResource("5_2fiie")]
+visible = false
