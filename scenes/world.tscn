@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://4wkwfid04t42"]
+[gd_scene load_steps=49 format=3 uid="uid://4wkwfid04t42"]
 
 [ext_resource type="PackedScene" uid="uid://d4gg4rod6v3dh" path="res://scenes/main.tscn" id="1_2endw"]
 [ext_resource type="Script" path="res://scenes/GameManagerProxy.gd" id="1_qknic"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scenes/Camera.gd" id="2_wlp7w"]
 [ext_resource type="PackedScene" uid="uid://bupi8sct0ieap" path="res://scenes/character.tscn" id="3_77do2"]
 [ext_resource type="Texture2D" uid="uid://bfm5sk28s3off" path="res://assets/sky.png" id="5_4tj5b"]
-[ext_resource type="FontFile" uid="uid://dp77ah6lepo7b" path="res://Peace Sans.otf" id="6_ohamr"]
 [ext_resource type="Texture2D" uid="uid://cahsem2rgd6v2" path="res://assets/sun.png" id="6_yw0rd"]
 [ext_resource type="Texture2D" uid="uid://ccott71h6by6g" path="res://assets/river_long.png" id="7_rn17a"]
 [ext_resource type="Texture2D" uid="uid://bgwfsidotx764" path="res://assets/mountian4.png" id="8_6t1hh"]
@@ -23,8 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://mkuchhinwy5c" path="res://assets/page.png" id="20_ihj1f"]
 
 [sub_resource type="Environment" id="Environment_i84sk"]
-
-[sub_resource type="Theme" id="Theme_vnpf1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5d2r"]
 atlas = ExtResource("13_xq1wy")
@@ -582,9 +579,8 @@ script = ExtResource("2_wlp7w")
 
 [node name="play_button" parent="main/menu/Control" index="0"]
 texture_filter = 0
-scale = Vector2(5.32, 5.32)
-theme = SubResource("Theme_vnpf1")
-theme_override_fonts/font = ExtResource("6_ohamr")
+offset_left = 174.0
+offset_right = 529.0
 
 [node name="CharacterBody2D" parent="main" instance=ExtResource("3_77do2")]
 
